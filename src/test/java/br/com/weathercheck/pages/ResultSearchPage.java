@@ -1,7 +1,12 @@
 package br.com.weathercheck.pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import br.com.weathercheck.models.Location;
 
@@ -26,7 +31,11 @@ public class ResultSearchPage {
 	 */
 	public Location saveLocationTemperature() {
 		Location location = new Location();
-		location.setTemperatureInCelsius(Integer.parseInt(driver.findElement(By.id("wob_tm")).getText()));		
+		
+		WebElement temperature = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.presenceOfElementLocated(By.id("wob_tm")));
+		
+		location.setTemperatureInCelsius(Integer.parseInt(temperature.getText()));
+//		location.setTemperatureInCelsius(Integer.parseInt(driver.findElement(By.id("wob_tm")).getText()));		
 		return location;
 	}
 
