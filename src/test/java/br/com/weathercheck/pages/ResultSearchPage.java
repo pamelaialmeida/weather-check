@@ -35,7 +35,7 @@ public class ResultSearchPage {
 		WebElement temperature = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.presenceOfElementLocated(By.id("wob_tm")));
 		
 		location.setTemperatureInCelsius(Integer.parseInt(temperature.getText()));
-//		location.setTemperatureInCelsius(Integer.parseInt(driver.findElement(By.id("wob_tm")).getText()));		
+	
 		return location;
 	}
 
